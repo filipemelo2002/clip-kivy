@@ -1,0 +1,46 @@
+#:kivy 2.1.0
+<GroupList>:
+    name: "GroupList"
+    BoxLayout:
+        orientation: "vertical"
+        spacing: 30
+        ScrollView:
+            do_scroll_x: False
+            do_scroll_y: True
+            size: root.width * 0.9, 68
+            size_hint_x: None
+            pos_hint: {'center_x': 0.5}
+            halign: 'middle'
+            GridLayout:
+                id: container
+                size: root.width * 0.9, 68
+                size_hint_x: None
+                row_default_height: 20
+                spacing: 10, 10
+                cols: 1
+                Label:
+                    text_size: self.size
+                    text: "Suas Categorias"
+                    font_size: 24
+                    halign: 'center'
+                    valign: 'middle'
+                    size_hint_y: None
+                    height: 30
+        redondoButton:
+            size_hint_y: None
+            height: 44
+            text_size: self.width, None
+            padding: 10, 10
+            text: 'Criar Categorias'
+            on_release: root.on_navigate_back()
+
+<redondoButton@Button>
+    background_color: (0,0,0,0)
+    background_normal: ''
+    canvas.before:
+        Color:
+            rgba: (48/255, 84/255, 150/255, 1)
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: [20]

@@ -1,12 +1,80 @@
 #:kivy 2.1.0
+#:import rgba kivy.utils.rgba
 
 <CreateGroup>:
     name: "CreateGroup"
-    GridLayout:
-        cols: 3
-        Button:
-            text: "Hello kivy"
-        Button:
-            text: "Hello kivy"
-        Button:
-            text: "Hello kivy"
+    BoxLayout:
+        orientation: "vertical"
+        spacing: 30
+        GridLayout:
+            size: root.width * 0.9, 68
+            size_hint_x: None
+            row_default_height: 20
+            spacing: 10, 10
+            cols: 1
+            halign: 'middle'
+            pos_hint: {'center_x': 0.5}
+            Label:
+                text_size: self.size
+                text: "Criar Categoria"
+                font_size: 24
+                halign: 'center'
+                valign: 'middle'
+                size_hint_y: None
+                height: 30
+            Label:
+                id: error_label
+                text_size: self.size
+                text: "Preencha todos os campos!"
+                font_size: 16
+                halign: 'center'
+                valign: 'middle'
+                size_hint_y: None
+                height: 30
+                color: rgba("#ff3300")
+                opacity: 0
+            Label:
+                text_size: self.size
+                text: "Título do grupo"
+                font_size: 16
+                halign: 'left'
+                valign: 'middle'
+                size_hint_y: None
+                height: 20
+            TextInput:
+                id: title
+                height: 44
+                size_hint_y: None
+                multiline: False
+                font_size: 16
+                background_color: 1,1,1,1
+                padding_y: [self.height / 2.0 - (self.line_height / 2.0) * len(self._lines), 0]
+            Label:
+                id: description
+                text_size: self.size
+                text: "Descrição do grupo"
+                font_size: 16
+                halign: 'left'
+                valign: 'middle'
+                size_hint_y: None
+                height: 20
+            TextInput:
+                id: description
+                height: 44
+                size_hint_y: None
+                multiline: False
+                font_size: 16
+                background_color: 1,1,1,1
+                padding_y: [self.height / 2.0 - (self.line_height / 2.0) * len(self._lines), 0]
+            redondoButton:
+                text: "Salvar"
+                height: 44
+                size_hint_y: None
+                on_release: root.on_save()
+        redondoButton:
+            size_hint_y: None
+            height: 44
+            text_size: self.width, None
+            padding: 10, 10
+            text: 'Ver Categorias'
+            on_release: root.navigate_list()
